@@ -1,0 +1,43 @@
+import std::allocator::Allocator;
+
+enum Version {
+    V17,
+    V23,
+}
+
+class Person {
+    name: string,
+    age: i32,
+    allocator: Allocator,
+
+    fn init(name: string, age: i32) -> Person {
+        var person = Person;
+        person.name = name;
+        person.age = age;
+        person.allocator = None;
+        return person;
+    }
+
+    fn init(allocator: Allocator, name: string, age: i32) -> *Person {
+        var *person = allocator.create(Person);
+        person->name = name;
+        person->age = age;
+        return person;
+    }
+
+    fn deinit(self: *Person) -> void {
+        self->allocator->destroy();
+    }
+}
+
+fn main() {
+    println("Hello");
+
+    const version = Version::V17;
+
+    const person1 = Person::init("Harry", 23);
+
+    const allocator = Allocator::init();
+    const *person2 = Person::init(allocator, "Harry", 23);
+    defer person2->deinit();
+}

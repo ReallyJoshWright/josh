@@ -1,0 +1,21 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-O0",
+      "-std=c++23",
+      "-I/home/josh/.config/.cppc",
+      "-o",
+      "app",
+      "./src/main.cpp",
+    ],
+    "directory": "/home/josh/Projects/josh",
+    "file": "/home/josh/Projects/josh/src/main.cpp",
+    "output": "/home/josh/Projects/josh/app"
+  }
+]
